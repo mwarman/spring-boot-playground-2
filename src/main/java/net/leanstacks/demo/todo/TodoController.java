@@ -28,6 +28,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import net.leanstacks.demo.exception.ExceptionDetail;
 
 @Tag(name = "Todos", description = "The API endpoints to access and mutate Todos.")
+@ApiResponse(responseCode = "400", description = "Bad Request", content = {
+		@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
+@ApiResponse(responseCode = "401", description = "Unauthorized", content = {
+		@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
+@ApiResponse(responseCode = "403", description = "Forbidden", content = {
+		@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 @RestController
 @RequestMapping("/api/todos")
 public class TodoController {
@@ -42,12 +48,6 @@ public class TodoController {
 	@Operation(summary = "Get Todo", description = "Optionally provide detailed description of the API endpoint. Fugait qos voluptate irure adipiscing sed aenean. Duis neque eiusmod culpa laborum esse. E proident nisi aliqua exercitation nulla vel laboris. Consectetur aliqua non dolor laoreet consequat cupidatat morbi. Nul ero ero quis a aute do. Condimentum nostrud consequat laoreet vitae nam aliquip lorem. Convallis justo ad veniam elit dolor tempor dui amet.")
 	@ApiResponse(responseCode = "200", description = "OK", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = Todo.class)) })
-	@ApiResponse(responseCode = "400", description = "Bad Request", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "401", description = "Unauthorized", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "403", description = "Forbidden", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@ApiResponse(responseCode = "404", description = "Not Found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@GetMapping("/{id}")
@@ -64,12 +64,6 @@ public class TodoController {
 	@Operation(summary = "List Todos", description = "Optionally provide detailed description of the API endpoint. Fugait qos voluptate irure adipiscing sed aenean. Duis neque eiusmod culpa laborum esse. E proident nisi aliqua exercitation nulla vel laboris. Consectetur aliqua non dolor laoreet consequat cupidatat morbi. Nul ero ero quis a aute do. Condimentum nostrud consequat laoreet vitae nam aliquip lorem. Convallis justo ad veniam elit dolor tempor dui amet.")
 	@ApiResponse(responseCode = "200", description = "OK", content = {
 			@Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Todo.class))) })
-	@ApiResponse(responseCode = "400", description = "Bad Request", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "401", description = "Unauthorized", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "403", description = "Forbidden", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@GetMapping
 	public List<Todo> getTodos() {
 		logger.info("> getTodos");
@@ -83,12 +77,6 @@ public class TodoController {
 	@Operation(summary = "Create Todo", description = "Optionally provide detailed description of the API endpoint. Fugait qos voluptate irure adipiscing sed aenean. Duis neque eiusmod culpa laborum esse. E proident nisi aliqua exercitation nulla vel laboris. Consectetur aliqua non dolor laoreet consequat cupidatat morbi. Nul ero ero quis a aute do. Condimentum nostrud consequat laoreet vitae nam aliquip lorem. Convallis justo ad veniam elit dolor tempor dui amet.")
 	@ApiResponse(responseCode = "201", description = "Created", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = Todo.class)) })
-	@ApiResponse(responseCode = "400", description = "Bad Request", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "401", description = "Unauthorized", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "403", description = "Forbidden", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Todo createTodo(@Valid @RequestBody CreateTodoDto todoDto) {
@@ -103,12 +91,6 @@ public class TodoController {
 	@Operation(summary = "Update Todo", description = "Optionally provide detailed description of the API endpoint. Fugait qos voluptate irure adipiscing sed aenean. Duis neque eiusmod culpa laborum esse. E proident nisi aliqua exercitation nulla vel laboris. Consectetur aliqua non dolor laoreet consequat cupidatat morbi. Nul ero ero quis a aute do. Condimentum nostrud consequat laoreet vitae nam aliquip lorem. Convallis justo ad veniam elit dolor tempor dui amet.")
 	@ApiResponse(responseCode = "200", description = "OK", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = Todo.class)) })
-	@ApiResponse(responseCode = "400", description = "Bad Request", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "401", description = "Unauthorized", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "403", description = "Forbidden", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@ApiResponse(responseCode = "404", description = "Not Found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@PutMapping("/{id}")
@@ -124,12 +106,6 @@ public class TodoController {
 
 	@Operation(summary = "Delete Todo", description = "Optionally provide detailed description of the API endpoint. Fugait qos voluptate irure adipiscing sed aenean. Duis neque eiusmod culpa laborum esse. E proident nisi aliqua exercitation nulla vel laboris. Consectetur aliqua non dolor laoreet consequat cupidatat morbi. Nul ero ero quis a aute do. Condimentum nostrud consequat laoreet vitae nam aliquip lorem. Convallis justo ad veniam elit dolor tempor dui amet.")
 	@ApiResponse(responseCode = "204", description = "No Content")
-	@ApiResponse(responseCode = "400", description = "Bad Request", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "401", description = "Unauthorized", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
-	@ApiResponse(responseCode = "403", description = "Forbidden", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@ApiResponse(responseCode = "404", description = "Not Found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ExceptionDetail.class)) })
 	@DeleteMapping("/{id}")
