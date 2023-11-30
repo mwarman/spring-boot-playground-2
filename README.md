@@ -32,6 +32,31 @@ The application is packaged as an executable Jar file, suitable for deployment t
 
 The Jar may be executed with a command like `java -jar demo-0.0.1-SNAPSHOT.jar`.
 
+### Testing
+
+#### Endpoints
+
+The application exposes a set of demonstration RESTful API endpoints which simulate standard CRUD operations on a `Todo` entity. The API endpoints are:
+
+- `POST /api/todos` - Create a Todo
+- `GET /api/todos` - List all Todos
+- `GET /api/todos/{id}` - Get a single Todo by `id`
+- `PUT /api/todos/{id}` - Update a Todo
+- `DELETE /api/todos/{id}` - Delete a Todo
+
+It is recommended that you use an API client such as Postman to exercise these endpoints. With Postman, you may import the OpenAPI specification (see below) rather than creating the endpoints manually.
+
+#### API Docs
+
+The application uses SpringDoc to generate both an interactive UI and an OpenAPI 3 specification.
+
+The URL for the UI is: http://localhost:8080/api-docs/swagger-ui/index.html
+
+The URL for the OpenAPI specification is: http://localhost:8080/api-docs
+
+Adjust the base URL as needed when accessing the UI in hosted environments.
+
+
 ## See Also
 For further reference, please consider the following sections:
 
