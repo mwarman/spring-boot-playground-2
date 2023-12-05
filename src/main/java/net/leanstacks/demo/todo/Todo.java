@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
 public class Todo {
 
@@ -33,6 +35,7 @@ public class Todo {
 		this.isComplete = isComplete;
 	}
 
+	@Schema(example = "5")
 	public Long getId() {
 		return id;
 	}
@@ -41,6 +44,7 @@ public class Todo {
 		this.id = id;
 	}
 
+	@Schema(example = "Document the API")
 	public String getTitle() {
 		return title;
 	}
@@ -49,6 +53,7 @@ public class Todo {
 		this.title = title;
 	}
 
+	@Schema(example = "true")
 	public boolean getIsComplete() {
 		return isComplete;
 	}
